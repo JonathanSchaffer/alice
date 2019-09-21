@@ -4,11 +4,12 @@ from time import sleep
 from os import system, path, listdir
 import subprocess
 from datetime import datetime
-conf = open("settings.conf")
-settings = conf.readlines()
-os = (settings[1])[0:-1]
-music_dir = (settings[3])[0:-1]
-c_dir = settings[5]
+try:
+    conf = open("settings.conf") # open configuration file
+    settings = conf.readlines() # read it
+    music_dir = (settings[0])
+except:
+    print("please run setup.py for music functionality")
 yes = ["of course", "yes", "that's right", "certainly"]
 no = ["no", "of course not", "no way", "definitely not"]
 thanks = ["thank you", "thanks", "thank you so much"]
@@ -17,12 +18,9 @@ what = ["huh?", "what?", "i don't know what you mean by that"]
 dont_know = ["i don't know", "i have no idea", "i dunno", "no idea"]
 jokes = ["why did the chicken cross the road?", "what did the paleontologist say to the dinosaur?", "what is the strongest creature in the world?", "what is the best season to jump on a trampoline?", "can a kangaroo jump higher than a house?", "patient to his doctor: i have forgotten so many things lately, and its getting worse. what can i do?", "why did my washing machine stop pumping out water?", "what did the judge say when he went to the dentist?"]
 answers = ["to get to the other side", "i've got a bone to pick with you", "the snail. It carries its whole house on its back", "spring time", "of course, a house can't jump at all", "doctor: yes, this is a known illness, unfortunately it has no cure. i'd also like to remind you about the 800 u.s. dollars that you owe me?", "and more importantly, where is my hamster?", "do you swear to pull the tooth, the whole tooth, and nothing but the tooth?"]
-lastQuestion = "lol, nothing :P"
+lastQuestion = "lol, nothing :P" # the last question alice was asked(in this case, nothing)
 # definitions
-def get_uptime():
-    output = subprocess.check_output(["cat", "/proc/uptime"])
-    return(float(output.split(" ")[0]))
-def replace_spaces(original, rep):
+def replace_spaces(original, rep): # input, what you want to replace the spaces with
     word = []
     string = ""
     for i in range(len(original)):
