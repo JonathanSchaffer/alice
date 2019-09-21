@@ -183,4 +183,5 @@ while True:
     except KeyboardInterrupt:
         say("bye!")
         break
-    #except:
+    except:
+        say("oops, i just made a mistake, can you please tell jonathan what you said so he can fix it?")
