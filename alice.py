@@ -137,25 +137,6 @@ def process():
     elif(question == "go die"):
         say("okay")
         raise KeyboardInterrupt
-    elif(split[0] == "add"):
-        try:
-            say(split[1] + " + " + split[3] + " = " + str(int(split[1]) + int(split[3])))
-        except:
-            if(question[-15:] == "to my todo list"):
-                todo = open(c_dir + "/todo.txt", "a+")
-                todo.write(question[4:-16] + "\n")
-                todo.close()
-                todo = open(c_dir + "/todo.txt", "r")
-                say("your to do list now contains:")
-                i = 0
-                for item in todo.readlines():
-                    if(i + 1 == len(todo.readlines())):
-                        say(item)
-                    else:
-                        say(item[0:-1])
-                todo.close()
-            else:
-                say("i could not add those numbers, are there only two, and are they numbers at all?")
     elif(question == "what songs do i have" or question == "what music do i have"):
         say("here is a list of all your music:")
         for file in listdir(music_dir):
