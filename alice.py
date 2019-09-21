@@ -132,11 +132,11 @@ def process():
     elif(split[0] == "define"):
         system("/usr/bin/x-www-browser http://www.dictionary.com/browse/" + replace_spaces(question[7:], "+") + " &")
         say("definition of " + question[7:])
-    elif(question == "go die"):
+    elif(question == "go die" or question == "go away"):
         say("okay")
         raise KeyboardInterrupt
     elif(question == "what songs do i have" or question == "what music do i have"):
-        say("here is a list of all your music:")
+        say("here is a list of all the music i can currently play:")
         for file in listdir(music_dir):
             if(file.endswith(".wav") or file.endswith(".mid")):
                 say(file[:-4])
@@ -161,7 +161,7 @@ you the date and time, play music, give you good recipes, and much more""")
     elif(question[0:4] == "who " or question[0:4] == "why " or question[0:4] == "can " or question[0:5] == "does " or question[0:5] == "when " or question[0:3] == "do " or question[0:3] == "is " or question[0:5] == "does " or question[0:5] == "will " or question[0:4] == "what" or question[0:4] == "how " or question[0:8] == "convert "):
         try:
             if(split[2] == "you" or split[1] == "you" or split[2] == "you"):
-                say("huh? " + choice(dont_know))
+                say(choice(dont_know))
             else:
                 system("/usr/bin/x-www-browser https://duckduckgo.com/?q=" + replace_spaces(question, "+") + " &")
                 say("here is what i found")
